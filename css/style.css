@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/* reset */
+* {margin:0;padding:0;box-sizing:border-box;--pointColor:#5a5afa;--pointLight:#9588ff;--pointDark:#0030c6}
+body, input, textarea, select, button, th, td {font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size:16px;line-height:1.5;font-style:normal}
+fieldset, input {border:0 none;background:transparent}
+input:focus {background:transparent}
+.blind, legend, caption {overflow:hidden;position:absolute;width:1px;height:1px;margin:-1px;clip:rect(0 0 0 0)}
+.row {width:100%;max-width:1200px;margin:0 auto}
+.main-insta {padding:120px 0;background-color:#ccc}
+.main-weather {padding:120px 0}
+.heading--two {margin-bottom:30px;text-align:center}
+.main-insta__slider {max-width:1920px;margin:0 auto;overflow:hidden}
+.main-instagram__slide {width:20%;max-width:380px;margin:0 auto}
+.main-instagram__thumbnail {display:block;position:relative;width:100%;height:0;padding-bottom:100%;overflow:hidden}
+.main-instagram__thumbnail img {position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.form-box {max-width:750px;margin:0 auto 30px}
+.form--weather-search {display:flex;flex-direction:row;justify-content:space-between}
+.form--weather-search fieldset {width:100%;border-bottom:1px solid #ccc}
+.form-input {width:100%;height:45px;padding:0 15px;line-height:45px;box-sizing:border-box;outline:none}
+.form-submit-wrap {position:relative}
+.form-submit {position:relative;height:45px;color:transparent;cursor:pointer;z-index:1}
+.form-submit-wrap i {position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);z-index:0}
+.main-flexwrap {display:flex;flex-wrap:wrap;justify-content:center}
+.main-weather__box {width:calc(33.333% - 20px);margin:0 10px;background-color:var(--pointColor);color:#fff;box-shadow:1px 1px 10px 0px rgba(0,0,0,0.1)}
+.main-weather__info {display:flex;justify-content:space-between;align-items:center;padding:20px;text-align:right}
+.main-weather__info p ~ p {margin-top:5px}
+.main-weather__temp {font-size:21px;font-weight:bold}
+.main-weather__icon {font-size:40px}
+.main-weather__info-sub {display:flex;flex-direction:row;justify-content:space-around;padding:20px;background-color:#fff;color:var(--pointColor)}
+/* media */
+@media screen and (max-width:1125px) {
+    .main-instagram__slide {width:100%;max-width:300px}
+    .main-weather {padding-left:16px;padding-right:16px}
+    .main-flexwrap {flex-wrap:nowrap;flex-direction:column;align-items:center}
+    .main-weather__box {width:100%;max-width:750px}
+    .main-weather__box ~ .main-weather__box {margin-top:10px}
+}
