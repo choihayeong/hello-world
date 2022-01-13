@@ -8,7 +8,7 @@ input:focus {background:transparent}
 .row {width:100%;max-width:1200px;margin:0 auto}
 .main-insta {padding:120px 0;background-color:#ccc}
 .main-weather {padding:120px 0}
-.heading--two {margin-bottom:30px;text-align:center}
+.heading--one {margin-bottom:30px;text-align:center}
 .main-insta__slider {max-width:1920px;margin:0 auto;overflow:hidden}
 .main-instagram__slide {width:20%;max-width:380px;margin:0 auto}
 .main-instagram__thumbnail {display:block;position:relative;width:100%;height:0;padding-bottom:100%;overflow:hidden}
