@@ -65,7 +65,7 @@ let inputLocation = document.querySelector('#f-location');
 const searchForm = document.querySelector('#searchForm');
 const searchBtn = document.querySelector('.btn--search');
 
-const apiKey = "01eb8a4b19f74d035ad46d4a3f819b80";
+const apiKey = "your api key";
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Seoul&lang=kr&appid=${apiKey}&units=metric`;
 
 let inputUrl;
