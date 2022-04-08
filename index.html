@@ -4,104 +4,104 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeatherApi</title>
-    <script src="js/jquery-3.6.0.min.js"></script>
+    <title>Weather Api ⛅</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Raleway:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
     <link rel="stylesheet" href="css/weather-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="wrap">
+        <header class="header">
+            <h1 id="title" class="title">Weather API ⛅</h1>
+        </header>
         <div class="content">
             <!-- weather -->
-            <aside id="main-weather" class="main-weather">
-                <h1 class="heading heading--one">실시간 날씨</h1>
-                <div class="row">
-                    <div class="form-box">
-                        <form action="" id="searchForm" class="form form--weather-search">
-                            <fieldset>
-                                <legend>지역 입력하기</legend>
-                                <div class="form-group">
-                                    <input type="text" name="f-location" id="f-location" placeholder="지역 아무데나 입력(영어로)" class="form-input">
-                                </div>
-                            </fieldset>
-                            <div class="form-submit-wrap">
-                                <input type="submit" value="검색" class="form-submit">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="main-flexwrap">
-                        <!-- 현재 위치 -->
-                        <div id="current-weather" class="main-weather__box" style="text-align:center;">
-                            <div class="main-weather__info">
-                                <p class="main-weather__icon">
-                                    <i></i>
-                                </p>
-                                <div class="main-weather__info-right">
-                                    <p class="main-weather__temp">
-                                        <span></span> ℃
-                                    </p> 
-                                    <p class="main-weather__desc"></p> 
-                                    <p class="main-weather__location">
-                                        <span></span>,
-                                        <span></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="main-weather__info-sub">
-                                <p class="main-weather__wind">
-                                    <i class="wi wi-strong-wind"></i>
-                                    <span></span> m/s
-                                </p>
-                                <p class="main-weather__humidity">
-                                    <i class="wi wi-humidity"></i>
-                                    <span></span> %
-                                </p>
-                                <p class="main-weather__cloud">
-                                    <i class="wi wi-cloud"></i>
-                                    <span></span> %
+            <section id="dashboard" class="dashboard">
+                <!-- input -->
+                <form id="searchForm" class="form form--search flex">
+                    <fieldset>
+                        <legend>Enter the location what you want to know</legend>
+                        <div class="form-group">
+                            <input type="text" id="iptLocation" placeholder="지역 아무데나 입력(영어로)" class="ipt ipt--location">
+                        </div>
+                    </fieldset>
+                    <input type="submit" value="🔍" class="ipt ipt--primary ipt--submit ipt--search">
+                </form>
+                <!-- // -->
+                <div class="dashboard__inner">
+                    <!-- 현재 위치 -->
+                    <div id="currentWeather" class="dashboard__item">
+                        <div class="item-info">
+                            <p class="item-info__icon">
+                                <i></i>
+                            </p>
+                            <div class="item-info__right">
+                                <p class="item-info__temperature">
+                                    36.5 ℃
+                                </p> 
+                                <p class="item-info__description">맑음</p>
+                                <p class="item-info__location">
+                                    Mok-dong, Korea
                                 </p>
                             </div>
                         </div>
-                        <!-- 검색 위치 -->
-                        <div id="search-weather" class="main-weather__box" style="display:none; text-align:center;">
-                            <div class="main-weather__info">
-                                <p class="main-weather__icon">
-                                    <i></i>
-                                </p>
-                                <div class="main-weather__info-right">
-                                    <p class="main-weather__temp">
-                                        <span></span> ℃
-                                    </p> 
-                                    <p class="main-weather__desc"></p>
-                                    <p class="main-weather__location">
-                                        <span></span>,
-                                        <span></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="main-weather__info-sub">
-                                <p class="main-weather__wind">
-                                    <i class="wi wi-strong-wind"></i>
-                                    <span></span> m/s
-                                </p>
-                                <p class="main-weather__humidity">
-                                    <i class="wi wi-humidity"></i>
-                                    <span></span> %
-                                </p>
-                                <p class="main-weather__cloud">
-                                    <i class="wi wi-cloud"></i>
-                                    <span></span> %
+                        <div class="item-info item-info--sub">
+                            <p class="item-info__wind">
+                                <i class="wi wi-strong-wind"></i>
+                                <span></span> m/s
+                            </p>
+                            <p class="item-info__humidity">
+                                <i class="wi wi-humidity"></i>
+                                <span></span> %
+                            </p>
+                            <p class="item-info__cloud">
+                                <i class="wi wi-cloud"></i>
+                                <span></span> %
+                            </p>
+                        </div>
+                    </div>
+                    <!-- // -->
+                    <!-- 검색 위치 -->
+                    <div id="searchWeather" class="dashboard__item" style="display:none">
+                        <div class="item-info">
+                            <p class="item-info__icon">
+                                <i></i>
+                            </p>
+                            <div class="item-info__right">
+                                <p class="item-info__temperature">
+                                    36.5 ℃
+                                </p> 
+                                <p class="item-info__description">맑음</p>
+                                <p class="item-info__location">
+                                    Mok-dong, Korea
                                 </p>
                             </div>
                         </div>
+                        <div class="item-info item-info--sub">
+                            <p class="item-info__wind">
+                                <i class="wi wi-strong-wind"></i>
+                                <span></span> m/s
+                            </p>
+                            <p class="item-info__humidity">
+                                <i class="wi wi-humidity"></i>
+                                <span></span> %
+                            </p>
+                            <p class="item-info__cloud">
+                                <i class="wi wi-cloud"></i>
+                                <span></span> %
+                            </p>
+                        </div>
                     </div>
+                    <!-- // -->
                 </div>
-            </aside>
+            </section>
             <!-- // -->
         </div>
     </div>
+    
     <script src="js/scripts.js"></script>
 </body>
 </html>
