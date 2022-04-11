@@ -1,14 +1,4 @@
 const API_KEY = "01eb8a4b19f74d035ad46d4a3f819b80";
-// current
-const currentWeather = document.querySelector('#currentWeather');
-const currentIcon = currentWeather.querySelector('.item-info__icon');
-const currentTemperature = currentWeather.querySelector('.item-info__temperature');
-const currentDesc = currentWeather.querySelector('.item-info__description');
-const currentLocation = currentWeather.querySelector('.item-info__location');
-const currentWind = currentWeather.querySelector('.item-info__wind span');
-const currentHumidity = currentWeather.querySelector('.item-info__humidity span');
-const currentCloud = currentWeather.querySelector('.item-info__cloud span');
-
 // icon Change
 let iconChange = {
     '01d': 'wi wi-day-sunny',
@@ -31,6 +21,16 @@ let iconChange = {
     '50n': 'wi wi-fog',
 };
 
+// current weather & location 
+const currentWeather = document.querySelector('#currentWeather');
+const currentIcon = currentWeather.querySelector('.item-info__icon');
+const currentTemperature = currentWeather.querySelector('.item-info__temperature');
+const currentDesc = currentWeather.querySelector('.item-info__description');
+const currentLocation = currentWeather.querySelector('.item-info__location');
+const currentWind = currentWeather.querySelector('.item-info__wind span');
+const currentHumidity = currentWeather.querySelector('.item-info__humidity span');
+const currentCloud = currentWeather.querySelector('.item-info__cloud span');
+
 function getLocationSuccess(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
@@ -49,6 +49,60 @@ function getLocationSuccess(position) {
             currentHumidity.textContent = weather.main.humidity;
             currentCloud.textContent = weather.clouds.all;            
         });
+
+    locationForecast(lat, lon);
+}
+function createForecastItem(id) {
+    const currentForecast = document.querySelector('#currentForecast');
+    const div = document.createElement('div');
+    const span = document.createElement('span');
+
+    div.classList.add('forecast-info');
+    div.id = id;
+    currentForecast.appendChild(div);
+
+    for (let i = 0; i < 4; i++) {
+        createForecastInfo(div);
+    }
+}
+function createForecastInfo(ele) {
+    const span = document.createElement('span');
+    ele.appendChild(span);
+}
+function locationForecast (lat, lon) {
+    const locationUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${API_KEY}&units=metric&lang=kr`;
+
+    fetch(locationUrl)
+        .then(response => response.json())
+        .then(weather => {
+            const dailyArr = weather.daily;
+
+            dailyArr.forEach(ele => {
+                createForecastItem(ele.dt);
+
+                const forecastInfo = document.querySelectorAll('.forecast-info');
+
+                const iconClass = iconChange[ele.weather[0].icon];
+                const eleDate = new Date(ele.dt * 1000);
+                const eleTemp = ele.temp.day;
+                const eleIcon = `<i class="${iconClass}"></i>`;
+                const eleDescription = ele.weather[0].description;
+
+                forecastInfo.forEach(info => {
+                    if (ele.dt === Number(info.id)) {
+                        const date = info.querySelector('span:first-child');
+                        const icon = info.querySelector('span:nth-child(2)');
+                        const temp = info.querySelector('span:nth-child(3)');
+                        const description = info.querySelector('span:nth-child(4)');
+
+                        date.textContent = `${eleDate.getMonth() + 1} / ${eleDate.getDate()}`
+                        icon.innerHTML = eleIcon;
+                        temp.textContent = `${eleTemp} ℃`;
+                        description.textContent = eleDescription;
+                    }
+                });
+            })          
+        });
 }
 function getLocationFailed() {
     alert("위치를 알 수 없어 정보를 불러올 수 없습니당");
@@ -59,8 +113,8 @@ navigator.geolocation.getCurrentPosition(getLocationSuccess, getLocationFailed);
 // search
 const searchForm = document.querySelector('#searchForm');
 const iptLocation = searchForm.querySelector('#iptLocation');
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Seoul&lang=kr&appid=${API_KEY}&units=metric`;
 
+const dashScroll = document.querySelector('#dashScroll');
 const searchWeather = document.querySelector('#searchWeather');
 const searchIcon = searchWeather.querySelector('.item-info__icon');
 const searchTemperature = searchWeather.querySelector('.item-info__temperature');
@@ -94,12 +148,13 @@ function submitSearchInput(event) {
                 
                 searchIcon.innerHTML = `<i class="${iconClass}"></i>`;
                 searchTemperature.textContent = `${weather.main.temp} ℃`;
-                searchDesc.textContent = `${weather.weather[0].description}`;
+                searchDesc.textContent = weather.weather[0].description;
                 searchLocation.textContent = `${weather.name}, ${weather.sys.country}`;
-                searchWind.textContent = `${weather.wind.speed}`;
-                searchHumidity.textContent = `${weather.main.humidity}`;
-                searchCloud.textContent = `${weather.clouds.all}`;
+                searchWind.textContent = weather.wind.speed;
+                searchHumidity.textContent = weather.main.humidity;
+                searchCloud.textContent = weather.clouds.all;
 
+                dashScroll.classList.add('on');
                 searchWeather.style.display = "block";
             } catch (error) {
                 console.log(error);
@@ -111,3 +166,6 @@ function submitSearchInput(event) {
 }
 
 searchForm.addEventListener('submit',submitSearchInput);
+
+// air pollution api
+const airpollutionUrl =  `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=37.5108&lon=127.0293&appid=${API_KEY}&units=metric&lang=kr`;

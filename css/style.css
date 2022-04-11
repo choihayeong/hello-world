@@ -15,6 +15,10 @@ table {border-collapse:collapse;border-spacing:0}
 th,td {font-family:inherit}
 legend,caption,.blind {position:absolute;top:0;left:0;overflow:hidden;margin:-1px;width:1px;height:1px;clip:rect(0 0 0 0)}
 /* design */
+:root {
+    --pointColor : #5a5aff;
+    --pointDark : #0030cb;
+}
 body {background-color:#ffffee;font-family:'Raleway','Malgun Gothic','맑은 고딕',sans-serif}
 .table {display:table;table-layout:fixed;width:100%}
 .table > .cell {display:table-cell;vertical-align:middle}
@@ -22,26 +26,40 @@ body {background-color:#ffffee;font-family:'Raleway','Malgun Gothic','맑은 고
 .flex > * {flex:1}
 .wrap {position:relative;height:100vh;padding:0 100px;background-repeat:no-repeat;background-size:cover;background-position:center}
 .header {padding:30px 0;text-align:center}
-.title {color:#6495ed;font-size:36px;font-weight:bold;user-select:none}
+.title {color:var(--pointColor);font-size:36px;font-weight:bold;user-select:none}
 .ipt {padding:10px;border:1px solid #ccc;border-radius:5px;background-color:#fff}
 .ipt::placeholder {color:#ccc}
 .ipt--username {text-align:center}
 .ipt--submit {background-color:#ccc;color:#fff;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease}
 .ipt--submit:hover {border-color:#aaa;background-color:#aaa}
 .btn {padding:10px;border:1px solid #ccc;border-radius:5px;background-color:#ccc;color:#fff;text-transform:uppercase;transition:all 0.3s ease}
-.btn--primary, .ipt--primary {border-color:#6495ed;background-color:#6495ed}
-.btn--primary:hover, .ipt--primary:hover {border-color:#2668ba;background-color:#2668ba}
+.btn--primary, .ipt--primary {border-color:var(--pointColor);background-color:var(--pointColor)}
+.btn--primary:hover, .ipt--primary:hover {border-color:var(--pointDark);background-color:var(--pointDark)}
 .ipt--location {width:100%}
 .ipt--search {flex:none;margin-left:10px}
 .dashboard {max-width:750px;margin:0 auto}
-.dashboard__inner {margin-top:30px}
-.dashboard__item {width:50%;margin:0 auto;border:1px solid #ccc;border-radius:5px;background-color:#6495ed;color:#fff;text-align:center;box-shadow:0px 0px 10px rgba(0,0,0,0.2);overflow:hidden}
-.dashboard__item ~ .dashboard__item {margin-top:10px}
+.dashboard__inner {padding:30px 0;overflow:hidden}
+.dashboard__item {width:100%;margin:0 auto;border:1px solid #ccc;border-radius:5px;background-color:var(--pointColor);color:#fff;text-align:center;box-shadow:0px 0px 10px rgba(0,0,0,0.2);overflow:hidden}
+.dashboard__item--forecast {margin-top:25px;padding:10px}
+.dashboard__item > h3 {margin-bottom:15px;font-size:24px;font-weight:600}
 .item-info {display:flex;justify-content:space-between;align-items:center;padding:20px;text-align:right}
-.item-info--sub {display:flex;flex-direction:row;justify-content:space-around;padding:20px;background-color:#fff;color:#6495ed}
+.item-info--sub {display:flex;flex-direction:row;justify-content:space-around;padding:20px 10px;background-color:#fff;color:var(--pointColor)}
 .item-info p ~ p {margin-top:5px}
 .item-info__icon {font-size:40px}
 .item-info__temperature {font-size:21px;font-weight:bold}
+.forecast-info {display:flex;justify-content:space-between;align-items:center}
+.forecast-info ~ .forecast-info {margin-top:10px}
+.forecast-info > * {flex:1}
+.forecast-info span:nth-child(2) {font-size:24px}
+.scroll {overflow-x:scroll}
+.scroll__inner {display:flex;width:100%;padding-bottom:10px}
+.scroll__inner.on {width:175%}
+.scroll__inner.on > * {width:calc(56% - 50px);margin:0}
+.scroll__item ~ .scroll__item {margin-left:25px}
+.scroll::-webkit-scrollbar {height:4px;border-radius:2px;background-color:#ccc}
+.scroll::-webkit-scrollbar-thumb {border-radius:2px;background-color:var(--pointDark);background-clip:padding-box}
+.scroll::-webkit-scrollbar-button {display:none;width:0;height:0}
+.scroll::-webkit-scrollbar-corner {background-color:transparent}
 /* media */
 @media screen and (max-width:1024px) {
     .wrap {padding:0 25px}

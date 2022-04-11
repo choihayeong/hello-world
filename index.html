@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Api ⛅</title>
+    <title>Weather API ⛅</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Raleway:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
     <link rel="stylesheet" href="css/weather-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -28,72 +27,81 @@
                             <input type="text" id="iptLocation" placeholder="지역 아무데나 입력(영어로)" class="ipt ipt--location">
                         </div>
                     </fieldset>
-                    <input type="submit" value="🔍" class="ipt ipt--primary ipt--submit ipt--search">
+                    <input type="submit" title="검색하기" value="🔍" class="ipt ipt--primary ipt--submit ipt--search">
                 </form>
                 <!-- // -->
                 <div class="dashboard__inner">
-                    <!-- 현재 위치 -->
-                    <div id="currentWeather" class="dashboard__item">
-                        <div class="item-info">
-                            <p class="item-info__icon">
-                                <i></i>
-                            </p>
-                            <div class="item-info__right">
-                                <p class="item-info__temperature">
-                                    36.5 ℃
-                                </p> 
-                                <p class="item-info__description">맑음</p>
-                                <p class="item-info__location">
-                                    Mok-dong, Korea
-                                </p>
+                    <div class="scroll">
+                        <div id="dashScroll" class="scroll__inner">
+                            <!-- 현재 위치 -->
+                            <div id="currentWeather" class="dashboard__item scroll__item">
+                                <div class="item-info">
+                                    <p class="item-info__icon">
+                                        <i></i>
+                                    </p>
+                                    <div class="item-info__right">
+                                        <p class="item-info__temperature">
+                                            36.5 ℃
+                                        </p> 
+                                        <p class="item-info__description">맑음</p>
+                                        <p class="item-info__location">
+                                            Mok-dong, Korea
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="item-info item-info--sub">
+                                    <p title="풍속" class="item-info__wind">
+                                        <i class="wi wi-strong-wind"></i>
+                                        <span></span> m/s
+                                    </p>
+                                    <p title="습도" class="item-info__humidity">
+                                        <i class="wi wi-humidity"></i>
+                                        <span></span> %
+                                    </p>
+                                    <p title="구름 양" class="item-info__cloud">
+                                        <i class="wi wi-cloud"></i>
+                                        <span></span> %
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="item-info item-info--sub">
-                            <p class="item-info__wind">
-                                <i class="wi wi-strong-wind"></i>
-                                <span></span> m/s
-                            </p>
-                            <p class="item-info__humidity">
-                                <i class="wi wi-humidity"></i>
-                                <span></span> %
-                            </p>
-                            <p class="item-info__cloud">
-                                <i class="wi wi-cloud"></i>
-                                <span></span> %
-                            </p>
+                            <!-- // -->
+                            <!-- 검색 위치 -->
+                            <div id="searchWeather" class="dashboard__item scroll__item" style="display:none">
+                                <div class="item-info">
+                                    <p class="item-info__icon">
+                                        <i></i>
+                                    </p>
+                                    <div class="item-info__right">
+                                        <p class="item-info__temperature">
+                                            36.5 ℃
+                                        </p> 
+                                        <p class="item-info__description">맑음</p>
+                                        <p class="item-info__location">
+                                            Mok-dong, Korea
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="item-info item-info--sub">
+                                    <p title="풍속" class="item-info__wind">
+                                        <i class="wi wi-strong-wind"></i>
+                                        <span></span> m/s
+                                    </p>
+                                    <p title="습도" class="item-info__humidity">
+                                        <i class="wi wi-humidity"></i>
+                                        <span></span> %
+                                    </p>
+                                    <p title="구름 양" class="item-info__cloud">
+                                        <i class="wi wi-cloud"></i>
+                                        <span></span> %
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- // -->
                         </div>
                     </div>
-                    <!-- // -->
-                    <!-- 검색 위치 -->
-                    <div id="searchWeather" class="dashboard__item" style="display:none">
-                        <div class="item-info">
-                            <p class="item-info__icon">
-                                <i></i>
-                            </p>
-                            <div class="item-info__right">
-                                <p class="item-info__temperature">
-                                    36.5 ℃
-                                </p> 
-                                <p class="item-info__description">맑음</p>
-                                <p class="item-info__location">
-                                    Mok-dong, Korea
-                                </p>
-                            </div>
-                        </div>
-                        <div class="item-info item-info--sub">
-                            <p class="item-info__wind">
-                                <i class="wi wi-strong-wind"></i>
-                                <span></span> m/s
-                            </p>
-                            <p class="item-info__humidity">
-                                <i class="wi wi-humidity"></i>
-                                <span></span> %
-                            </p>
-                            <p class="item-info__cloud">
-                                <i class="wi wi-cloud"></i>
-                                <span></span> %
-                            </p>
-                        </div>
+                    <!-- forecast -->
+                    <div id="currentForecast" class="dashboard__item dashboard__item--forecast">
+                        <h3>7 Days Forecast</h3>
                     </div>
                     <!-- // -->
                 </div>
