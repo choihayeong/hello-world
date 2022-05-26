@@ -1,0 +1,23 @@
+{
+  "name": "weatherApi",
+  "version": "1.0.0",
+  "description": "- OpenWeather api를 이용한 날씨 실시간 측정",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choihayeong/weatherApi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/choihayeong/weatherApi/issues"
+  },
+  "homepage": "https://github.com/choihayeong/weatherApi#readme",
+  "dependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}
